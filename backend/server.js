@@ -19,3 +19,5 @@ app.get('/', (req, res) => {
 app.listen(PORT, HOSTNAME, (req, res) => {
     console.log(`Servidor corriendo en http://${HOSTNAME}:${PORT}`)
 })
+
+module.exports = app
