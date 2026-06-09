@@ -7,7 +7,7 @@ app.use(cors())
 app.use(express.json())
 
 const HOSTNAME = '127.0.0.1'
-const PORT = process.env.PORT
+const PORT = 3100
 
 const routerPrecio = require('./router/precio.router')
 app.use('/', routerPrecio)
