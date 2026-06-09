@@ -1,0 +1,126 @@
+:root {
+    --fondo: #0A0A0A;
+    --fondo-componente: #191919;
+    --borde: #302d2d;
+    --texto: #FCFCF7;
+    --texto-secundario: #d4d4cd;
+    --gris: #74747055;
+    --verde: #22C55E;
+    --verde-hover: #16A34A;
+    --rojo: #EF4444;
+    --rojo-hover: #DC2626;
+    --box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+body.dark {
+    --fondo: #FCFCF7;
+    --fondo-componente: #F5F5F5;
+    --borde: #D4D4D4;
+    --texto: #0A0A0A;
+    --texto-secundario: #4B5563;
+    --gris: #9CA3AF55;
+    --box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+body {
+    background: var(--fondo);
+    color: var(--texto);
+    align-items: center;
+    text-align: center;
+    font-family: Arial, "Inter", Helvetica, sans-serif;
+}
+
+.contenedor {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+/* header*/
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10pxs;
+}
+
+.header-fecha {
+    font-size: 1rem;
+}
+
+/* cards */
+
+.cont {
+    background: var(--fondo-componente);
+    border-radius: 12px;
+    margin-top: 10%;
+    border: 1px solid var(--borde);
+    box-shadow: var(--box-shadow);
+    padding: 20px;
+    max-width: 100%;
+}
+
+.cont h2 {
+    border-bottom: 1px solid var(--gris);
+    margin-bottom: 5%;
+    padding: 10px;
+    font-size: 1.2rem;
+}
+
+.dolarCont {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.compra,
+.venta {
+    display: grid;
+}
+
+.compra label,
+.venta label {
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    color: var(--texto-secundario);
+}
+
+span {
+    font-weight: bold;
+    letter-spacing: 0.02rem;
+}
+
+.compra span {
+    color: #61be5d;
+}
+
+
+
+
+
+
+/* modo tema */
+
+
+.modo-btn {
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    background: none;
+    color: var(--texto);
+    box-shadow: var(--box-shadow);
+    cursor: pointer;
+    height: 20%;
+}
+
+.modo-icon {
+    position: relative;
+    top: 1px;
+}
+
+/* info fecha*/
+.fecha {
+    color: var(--texto-secundario);
+    font-size: 0.8rem;
+    text-align: end;
+}

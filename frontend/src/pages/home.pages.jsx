@@ -1,0 +1,31 @@
+import "../App.css"
+import DolarOficial from "../components/dolarOficial.components"
+import DolarBlue from "../components/dolarBlue.components"
+import DolarCCL from "../components/dolarCCL.components"
+import DolarCripto from "../components/dolarCripto.components"
+import Modo from "../components/modo.components"
+import Info from "../components/info.components"
+import Fecha from "../components/fecha.components"
+
+
+export default function Home() {
+
+
+    return (
+        <div>
+            <div className="header">
+                <Fecha />
+                <Modo />
+            </div>
+            <div className="contenedor">
+                <div>
+                    <DolarOficial />
+                    <DolarBlue />
+                    <DolarCCL />
+                    <DolarCripto />
+                </div>
+            </div>
+            <Info />
+        </div>
+    )
+}
