@@ -40,7 +40,6 @@ body {
 .header {
     display: flex;
     justify-content: space-between;
-    padding: 10pxs;
 }
 
 .header-fecha {
@@ -95,6 +94,12 @@ span {
     color: #61be5d;
 }
 
+/* reload */
+
+.reload {
+    position: relative;
+    left: 40%;
+}
 
 /* modo tema */
 
@@ -104,9 +109,16 @@ span {
     border-radius: 12px;
     background: none;
     color: var(--texto);
-    box-shadow: var(--box-shadow);
     cursor: pointer;
     height: 20%;
+    transition: all .3s;
+}
+
+.modo-btn:hover {
+    background: var(--texto);
+    color: var(--fondo);
+    box-shadow: var(--box-shadow);
+
 }
 
 .modo-icon {
@@ -134,5 +146,9 @@ span {
     .fecha {
         margin-top: 10%;
         font-size: .7rem;
+    }
+
+    .reload {
+        left: 16%;
     }
 }

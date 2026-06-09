@@ -6,6 +6,7 @@ import DolarCripto from "../components/dolarCripto.components"
 import Modo from "../components/modo.components"
 import Info from "../components/info.components"
 import Fecha from "../components/fecha.components"
+import Reload from "../components/reload.components"
 
 
 export default function Home() {
@@ -15,7 +16,9 @@ export default function Home() {
         <div>
             <div className="header">
                 <Fecha />
+                <Reload />
                 <Modo />
+
             </div>
             <div className="contenedor">
                 <div>

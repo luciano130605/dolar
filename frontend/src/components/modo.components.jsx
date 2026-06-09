@@ -23,7 +23,7 @@ export default function Modo() {
             className='modo-btn'
         >
             <span className='modo-icon'>
-                {Modo ? <Luna size={16} color='var(--texto)' /> : <Sol size={16} color='var(--texto)' />}
+                {Modo ? <Luna size={16} color='currentColor' /> : <Sol size={16} color='currentColor' />}
             </span>
         </button>
     )
