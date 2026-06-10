@@ -1,4 +1,4 @@
-import { Recargar } from "../icons/Recargar"
+import Recargar from "../icons/Recargar"
 
 export default function Reload() {
     const recargar = () => {
