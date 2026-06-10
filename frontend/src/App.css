@@ -94,12 +94,14 @@ span {
     color: #61be5d;
 }
 
-/* reload */
-
-.reload {
-    position: relative;
-    left: 40%;
+.botones {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 1rem;
 }
+
+
 
 /* modo tema */
 
@@ -110,7 +112,7 @@ span {
     background: none;
     color: var(--texto);
     cursor: pointer;
-    height: 20%;
+    height: 100%;
     transition: all .3s;
 }
 

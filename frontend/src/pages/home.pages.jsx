@@ -16,9 +16,10 @@ export default function Home() {
         <div>
             <div className="header">
                 <Fecha />
-                <Reload />
-                <Modo />
-
+                <div className="botones">
+                    <Reload />
+                    <Modo />
+                </div>
             </div>
             <div className="contenedor">
                 <div>
