@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { Luna } from '../icons/luna'
-import { Sol } from '../icons/sol'
+import Luna from '../icons/luna'
+import Sol from '../icons/sol'
 
 export default function Modo() {
     const [Modo, setModo] = useState(() => {

@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import "../App.css"
+import { useEffect, useState } from "react"
 import { precioService } from "../services/dolar.services"
+import Loader from "../icons/loader"
 
 export default function DolarOficial() {
     const [dolar, setDolar] = useState(null)
@@ -17,61 +17,71 @@ export default function DolarOficial() {
         cargarDolar()
     }, [])
 
+
+    const fecha = dolar?.fecha
+        ? new Date(dolar.fecha).toLocaleString("es-AR", {
+            hour: "numeric",
+            minute: "2-digit",
+            hour12: true,
+        })
+        : "";
+
+
+
     return (
-        <div className="cont">
-            <h2>Dólar Oficial</h2>
-            {dolar && (
-                <>
-                    <div className="dolarCont">
-                        <div className="compra">
-                            <label>compra</label>
-                            <span>${dolar.compra}</span>
+        <div className="card">
+            <div className="card-cont">
+                <div className="card-header">
+                    <h2>Dólar Oficial</h2>
+                </div>
+
+                {dolar && (
+                    <div className="precios">
+                        <div className="precio-item">
+                            <div className="precio-label">
+                                <span title="Compra" className="dot dot-verde" />
+                                Compra
+                            </div>
+                            <div className="precio-valor">
+                                <span className="precio-signo">$</span>
+                                {dolar.compra}
+                            </div>
                         </div>
-                        <div className="venta">
-                            <label>venta</label>
-                            <span>${dolar.venta}</span>
+                        <div className="precio-item">
+                            <div title="Venta" className="precio-label">
+                                <span className="dot dot-rojo" />
+                                Venta
+                            </div>
+                            <div className="precio-valor">
+                                <span >$</span>
+                                {dolar.venta}
+                            </div>
                         </div>
                     </div>
-                </>
-            )}
+                )}
+                {!dolar && (
+                    <div className="precios">
+                        <div className="precio-item">
+                            <div className="precio-label">
+                                <span title="Compra" className="dot dot-verde" />
+                                Compra
+                            </div>
+                            <div className="precio-valor">
+                                <Loader size={14} className="loader" />
+                            </div>
+                        </div>
+                        <div className="precio-item">
+                            <div title="Venta" className="precio-label">
+                                <span className="dot dot-rojo" />
+                                Venta
+                            </div>
+                            <div className="precio-valor">
+                                <Loader size={14} className="loader" />
+                            </div>
+                        </div>
+                    </div>
+                )}
+            </div>
         </div>
     )
-    //     return (
-    //     //  {
-    //     //             dolar && (
-    //     //                 <>
-    //     //                     <div className="dolar-contenedor">
-    //     //                         <p className="compra">
-    //     //                             Compra: ${dolar.compra}
-    //     //                         </p>
-
-    //     //                         <p className="venta">
-    //     //                             Venta: ${dolar.venta}
-    //     //                         </p>
-    //     //                     </div>
-    //     //                     <p className="fecha">
-
-    //     //                         Última actualización · {
-
-    //     //                             new Date(dolar.fecha).toLocaleString(
-    //     //                                 'es-AR',
-    //     //                                 {
-    //     //                                     weekday: 'long',
-    //     //                                     day: 'numeric',
-    //     //                                     month: 'long',
-
-    //     //                                     hour: 'numeric',
-    //     //                                     minute: '2-digit',
-
-    //     //                                     hour12: true
-    //     //                                 }
-    //     //                             )
-
-    //     //                         }
-
-    //     //                     </p>
-    //     //                 </>
-    //     //             )
-    //     //         }
-    //  )
 }

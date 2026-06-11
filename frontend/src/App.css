@@ -25,86 +25,188 @@ body.dark {
 body {
     background: var(--fondo);
     color: var(--texto);
-    align-items: center;
-    text-align: center;
     font-family: Arial, "Inter", Helvetica, sans-serif;
 }
 
+
 .contenedor {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
     gap: 1rem;
+    padding: 1rem;
 }
 
-/* header*/
+
 .header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .header-fecha {
     font-size: 1rem;
 }
 
-/* cards */
 
-.cont {
+.card {
     background: var(--fondo-componente);
-    border-radius: 12px;
-    margin-top: 10%;
-    border: 1px solid var(--borde);
-    box-shadow: var(--box-shadow);
-    padding: 20px;
-    max-width: 100%;
+    border: 0.5px solid var(--borde);
+    border-radius: 20px;
+    overflow: hidden;
+    width: 100%;
+    margin: 1rem;
 }
 
-.cont h2 {
-    border-bottom: 1px solid var(--gris);
-    margin-bottom: 5%;
-    padding: 10px;
-    font-size: 1.2rem;
+
+.tip-cont {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--navy-light-transparent);
+    border: 0.5px solid var(--navy-light);
+    color: var(--acento-light);
+    padding: .35rem .9rem;
+    border-radius: 100px;
+    font-size: .75rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    width: fit-content
 }
 
-.dolarCont {
+.tip-circulo {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--acento-light);
+    animation: pulse 2s infinite;
+}
+
+
+.card-cont {
+    padding: 1.5rem;
+}
+
+.card-header {
     display: flex;
     align-items: center;
-    text-align: center;
-    justify-content: center;
-    gap: 1rem;
+    justify-content: space-between;
+    margin-bottom: 1.4rem;
 }
 
-.compra,
-.venta {
-    display: grid;
-}
-
-.compra label,
-.venta label {
-    text-transform: uppercase;
-    font-size: 0.7rem;
+.card-header h2 {
+    font-size: 0.8rem;
+    font-weight: 500;
     color: var(--texto-secundario);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 0;
 }
 
-span {
-    font-weight: bold;
-    letter-spacing: 0.02rem;
+
+/* precios */
+
+.precios {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
-.compra span {
-    color: #61be5d;
+.precio-item {
+    padding: 0.8rem 0;
+}
+
+.precio-item:first-child {
+    padding-right: 1.2rem;
+    border-right: 0.5px solid var(--borde);
+}
+
+.precio-item:last-child {
+    padding-left: 1.2rem;
+}
+
+.precio-label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--texto-secundario);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+    animation: pulse 2.2s infinite;
+}
+
+.dot-verde {
+    background: var(--verde);
+}
+
+.dot-rojo {
+    background: var(--rojo);
+}
+
+.precio-valor {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 1.7rem;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    color: var(--texto);
+    line-height: 1;
+}
+
+.precio-signo {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--texto-secundario);
+    vertical-align: super;
+    margin-right: 1px;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+}
+
+@keyframes girar {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loader {
+    color: var(--texto-secundario);
+    margin-left: 1rem;
+    margin-top: .4rem;
+    animation: girar 2s linear infinite;
 }
 
 .botones {
     display: flex;
     align-items: center;
-    justify-content: end;
+    justify-content: flex-end;
     gap: 1rem;
 }
-
-
-
-/* modo tema */
-
 
 .modo-btn {
     border: 1px solid var(--borde);
@@ -113,14 +215,13 @@ span {
     color: var(--texto);
     cursor: pointer;
     height: 100%;
-    transition: all .3s;
+    transition: all 0.3s;
 }
 
 .modo-btn:hover {
     background: var(--texto);
     color: var(--fondo);
     box-shadow: var(--box-shadow);
-
 }
 
 .modo-icon {
@@ -128,7 +229,7 @@ span {
     top: 1px;
 }
 
-/* info fecha*/
+
 .fecha {
     color: var(--texto-secundario);
     font-size: 0.8rem;
@@ -136,21 +237,23 @@ span {
 }
 
 
+
 @media (max-width: 768px) {
     .contenedor {
-        grid-template-columns: repeat(1, 1fr) !important;
+        flex-direction: column;
+    }
+
+    .movilNo {
+        display: none;
     }
 
     .header-fecha {
-        font-size: .8rem;
+        font-size: 0.8rem;
     }
 
     .fecha {
-        margin-top: 10%;
-        font-size: .7rem;
-    }
-
-    .reload {
-        left: 16%;
+        font-size: 0.7rem;
+        position: relative;
+        top: 6rem;
     }
 }

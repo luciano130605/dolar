@@ -37,6 +37,14 @@ export default function Info() {
                     </div>
                 </>
             )}
+            {!dolar && (
+                <>
+                    <div className="fecha">
+                        Última actualización sin fecha 
+
+                    </div>
+                </>
+            )}
         </div>
     )
 }

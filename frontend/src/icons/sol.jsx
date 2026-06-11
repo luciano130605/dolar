@@ -1,13 +1,103 @@
-export const Sol = ({ size = 24, color = "#000000" }) => {
-    return (<svg width={size} height={size} viewBox={`0 0 24 24`} fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g clip-path="url(#clip0_4418_9168)">
-            <path d="M12 18.5C15.5899 18.5 18.5 15.5899 18.5 12C18.5 8.41015 15.5899 5.5 12 5.5C8.41015 5.5 5.5 8.41015 5.5 12C5.5 15.5899 8.41015 18.5 12 18.5Z" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M19.14 19.14L19.01 19.01M19.01 4.99L19.14 4.86L19.01 4.99ZM4.86 19.14L4.99 19.01L4.86 19.14ZM12 2.08V2V2.08ZM12 22V21.92V22ZM2.08 12H2H2.08ZM22 12H21.92H22ZM4.99 4.99L4.86 4.86L4.99 4.99Z" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-        </g>
-        <defs>
-            <clipPath id="clip0_4418_9168">
-                <rect width="24" height="24" fill="white" />
-            </clipPath>
-        </defs>
-    </svg>);
-};
+import { forwardRef, useImperativeHandle } from "react";
+import { motion, useAnimate } from "motion/react";
+
+const Sol = forwardRef(
+    (
+        {
+            size = 50,
+            color = "currentColor",
+            strokeWidth = 2,
+            className = "",
+        },
+        ref
+    ) => {
+        const [scope, animate] = useAnimate();
+
+        const start = async () => {
+            animate(
+                ".sun-center",
+                { scale: [1, 0.8, 1] },
+                { duration: 0.4, ease: "easeInOut" }
+            );
+
+            animate(
+                ".sun-rays",
+                { opacity: [1, 0.4, 1] },
+                { duration: 0.5, ease: "easeInOut" }
+            );
+        };
+
+        const stop = () => {
+            animate(
+                ".sun-center",
+                { scale: 1 },
+                { duration: 0.2, ease: "easeOut" }
+            );
+
+            animate(
+                ".sun-rays",
+                { opacity: 1 },
+                { duration: 0.2, ease: "easeOut" }
+            );
+        };
+
+        useImperativeHandle(ref, () => {
+            return {
+                startAnimation: start,
+                stopAnimation: stop,
+            };
+        });
+
+        const handleHoverStart = () => {
+            start();
+        };
+
+        const handleHoverEnd = () => {
+            stop();
+        };
+
+        return (
+            <motion.div
+                ref={scope}
+                onHoverStart={handleHoverStart}
+                onHoverEnd={handleHoverEnd}
+                className={`inline-flex cursor-pointer items-center justify-center ${className}`}
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width={size}
+                    height={size}
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke={color}
+                    strokeWidth={strokeWidth}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+
+                    <motion.path
+                        className="sun-center"
+                        d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"
+                        style={{ transformOrigin: "center" }}
+                    />
+
+                    <motion.g className="sun-rays">
+                        <path d="M12 5l0 .01" />
+                        <path d="M17 7l0 .01" />
+                        <path d="M19 12l0 .01" />
+                        <path d="M17 17l0 .01" />
+                        <path d="M12 19l0 .01" />
+                        <path d="M7 17l0 .01" />
+                        <path d="M5 12l0 .01" />
+                        <path d="M7 7l0 .01" />
+                    </motion.g>
+                </svg>
+            </motion.div>
+        );
+    }
+);
+
+Sol.displayName = "Sol";
+
+export default Sol;
